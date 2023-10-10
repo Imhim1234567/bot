@@ -1,7 +1,7 @@
-import os
-from dotenv import load_dotenv
 import discord
+from dotenv import load_dotenv
 from discord.ext import commands
+import os
 
 load_dotenv()
 
@@ -19,6 +19,10 @@ class SimpleView(discord.ui.View):
     @discord.ui.button(label="Hello")
     async def hello(self, interaction: discord.Interaction, button: discord.ui.Button):
         await interaction.response.send_message("Hello World")
+
+        @discord.ui.button(label = "Cancel", style=discord.ButtonStyle.red)
+        async def cancel(self, interaction: discord.Interaction, button: discord.ui.Button):
+            await interaction.response.send_message("Cancelling")
     
 
 #calculations
