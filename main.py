@@ -25,7 +25,7 @@ class SimpleView(discord.ui.View):
             await interaction.response.send_message("Cancelling")
     
 
-#calculations
+
 def add(a, b):
     return a + b
 
@@ -56,8 +56,7 @@ async def calculate(ctx, num1, operation, num2):
         return
     
     await ctx.send(output)
-print("hello world")
-#hi
+
 
 @bot.command
 async def button(ctx):
@@ -65,8 +64,12 @@ async def button(ctx):
      #b = int(num2)
 
      view = SimpleView()
-    
+  
      await ctx.send(view=view)
+
+    
+     
+
 
 
 #testibng
