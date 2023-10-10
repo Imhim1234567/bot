@@ -52,6 +52,7 @@ async def calculate(ctx, num1, operation, num2):
         return
     
     await ctx.send(output)
+print("hello world")
 
 @bot.command
 async def button(ctx):
@@ -64,6 +65,7 @@ async def button(ctx):
 
 
 #testibng
+
      
 
     
