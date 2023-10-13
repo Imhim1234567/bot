@@ -20,9 +20,46 @@ class SimpleView(discord.ui.View):
     async def hello(self, interaction: discord.Interaction, button: discord.ui.Button):
         await interaction.response.send_message("Hello World")
 
-        @discord.ui.button(label = "Cancel", style=discord.ButtonStyle.red)
-        async def cancel(self, interaction: discord.Interaction, button: discord.ui.Button):
-            await interaction.response.send_message("Cancelling")
+    @discord.ui.button(label = "Cancel", style=discord.ButtonStyle.red)
+    async def cancel(self, interaction: discord.Interaction, button: discord.ui.Button):
+        await interaction.response.send_message("Cancelling")
+
+
+class TimeoutView(discord.ui.View):
+
+    foo = None
+
+    async def disable_all_items(self):
+        for item in self.children:
+            item.disabled = True
+
+        await self.message.edit(view=self)   
+        
+
+
+
+
+    async def on_timeout(self) -> None:
+        await self.message.channel.send("Timeout")
+        await self.disable_all_items()
+
+
+    @discord.ui.button(label="Hello")
+    async def hello(self, interaction: discord.Interaction, button: discord.ui.Button):
+        await interaction.response.send_message("Hello World")
+        self.foo = True
+        self.stop()
+
+    @discord.ui.button(label = "Cancel", style=discord.ButtonStyle.red)
+    async def cancel(self, interaction: discord.Interaction, button: discord.ui.Button):
+        await interaction.response.send_message("Cancelling")
+        self.foo = False
+
+
+ 
+ 
+          
+        
     
 
 
@@ -63,9 +100,25 @@ async def button(ctx):
      #a = int(num1)
      #b = int(num2)
 
-     view = SimpleView()
+     view = TimeoutView(timeout=5)
+
+     message = await ctx.send(view=view)
+     view.message = message
+     await view.wait()
+     await view.disable_all_items()
+
+
   
      await ctx.send(view=view)
+
+     if view.foo is None:
+         print("Timeout")
+     elif view.foo == True:
+         print("ok")
+     else:
+         print("cancel")        
+
+
 
     
      
