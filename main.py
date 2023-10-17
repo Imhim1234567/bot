@@ -197,9 +197,14 @@ async def buttonMath(ctx, arg1,arg2):
     elif view.operation == 2:
         result = multiply(a, b)
     elif view.operation == 3:
-        result = divide(a, b)    
+        result = divide(a, b) 
 
-        
+    if result is not  None:
+        await ctx.send(f"The result is:{result} ")    
+         
+
+
+
 
             
 
