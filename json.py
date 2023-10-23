@@ -32,6 +32,7 @@ with open("quotes.json", "r") as  json_file:
 
 def get_random_quote():
     random_quote = random.choice(quotes_data)
+    return f'"{random_quote["quote"]}" - {random_quote["author"]}'
      
 
 
@@ -49,4 +50,11 @@ async def print_num(ctx):
 
     cool_num = data["num"] = None
 
-    await ctx.send(f"The num is {cool_num}")    
+    await ctx.send(f"The num is {cool_num}") 
+
+@bot.command
+async def quote(ctx):
+     quote = get_random_quote()
+     await ctx.send(quote)   
+     
+        
