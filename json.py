@@ -52,9 +52,9 @@ async def print_num(ctx):
 
     await ctx.send(f"The num is {cool_num}") 
 
-@bot.command
+@bot.command()
 async def quote(ctx):
      quote = get_random_quote()
      await ctx.send(quote)   
-     
-        
+
+
