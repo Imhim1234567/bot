@@ -2,7 +2,7 @@ import discord
 from dotenv import load_dotenv
 from discord.ext import commands
 import os
-import json
+import json; import random
 
 load_dotenv()
 
@@ -25,6 +25,14 @@ def load_num(num):
 
 
 load_num(None)            
+
+with open("quotes.json", "r") as  json_file:
+        quotes_data = json.load(json_file)
+
+
+def get_random_quote():
+    random_quote = random.choice(quotes_data)
+     
 
 
 
