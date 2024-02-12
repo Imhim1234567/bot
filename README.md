@@ -1,7 +1,7 @@
 
 
 
-
+The code is in Json.Py
 
 Brief summary of this project prompt in your own words
 My bot is supposed to produce a random inspirational quote when the user clicks the button. 
